@@ -53,6 +53,17 @@ public class TestActivity extends Activity {
 				
 			}
 		});
+		
+		Button btn4 = (Button) this.findViewById(R.id.btn4);
+		btn4.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				testWxAll(context);
+				
+			}
+		});
 	}
 
 	public static void testWxLogin(Context c){
@@ -72,7 +83,8 @@ public class TestActivity extends Activity {
 	public static void testWxTongxulu(Context c){
 		try {
 			Bundle bundle = new Bundle();
-			bundle.putString("class","com.weixin.test.TestWxTongxunlu#testCase1");
+			//bundle.putString("class","com.weixin.test.TestWxTongxunlu#testCase1");
+			bundle.putString("class","com.weixin.command.TestTongxunlu#testBase");
 			bundle.putString("data_suffix","/.1");
 			ComponentName cn = new ComponentName("com.example.test","android.test.InstrumentationTestRunner");
 
@@ -86,7 +98,23 @@ public class TestActivity extends Activity {
 	public static void testWxFaxian(Context c){
 		try {
 			Bundle bundle = new Bundle();
-			bundle.putString("class","com.weixin.test.TestWxFaxian#testCase1");
+			//bundle.putString("class","com.weixin.test.TestWxFaxian#testCase1");
+			bundle.putString("class","com.weixin.command.TestFaxian#testBase");
+			bundle.putString("data_suffix","/.1");
+			ComponentName cn = new ComponentName("com.example.test","android.test.InstrumentationTestRunner");
+
+			c.startInstrumentation(cn, null, bundle);
+		} catch (Exception e) {
+			Log.e("", "Exception e:"+e.getMessage());
+			return;
+		}
+	}
+	
+	public static void testWxAll(Context c){
+		try {
+			Bundle bundle = new Bundle();
+			//bundle.putString("class","com.weixin.test.TestWxFaxian#testCase1");
+			bundle.putString("class","com.weixin.command.TestAll#testBase");
 			bundle.putString("data_suffix","/.1");
 			ComponentName cn = new ComponentName("com.example.test","android.test.InstrumentationTestRunner");
 
